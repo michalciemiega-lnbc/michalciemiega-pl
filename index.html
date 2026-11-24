@@ -17,6 +17,7 @@
     <a class="belka__znak" href="/">Michał Ciemięga</a>
     <nav aria-label="Główna">
       <a href="#oferta">Oferta</a>
+      <a href="#cennik">Cennik</a>
       <a href="#przebieg">Jak to wygląda</a>
       <a href="#voucher">Voucher</a>
       <a href="#zapytanie">Zapytaj o termin</a>
@@ -45,13 +46,49 @@
         <article>
           <h3>Portret</h3>
           <p>Twarz, spojrzenie, ramiona. Zdjęcie dla siebie, na prezent albo do profilu zawodowego.</p>
-          <p class="cicho">Pakiety i ceny pojawią się wkrótce.</p>
         </article>
         <article>
           <h3>Sylwetka</h3>
           <p>Cała postać na cyklo: ruch, linia ciała, ubranie, które lubisz. Bez dekoracji, tylko Ty i światło.</p>
-          <p class="cicho">Pakiety i ceny pojawią się wkrótce.</p>
         </article>
+      </div>
+    </section>
+
+    <section id="cennik" aria-labelledby="cennik-tytul">
+      <h2 class="naglowek" id="cennik-tytul">Trzy pakiety</h2>
+      <div class="tekst">
+        <p>Każdy pakiet możesz wykorzystać na portret, sylwetkę albo jedno i drugie. W cenie jest wynajem studia i obróbka wybranych zdjęć.</p>
+      </div>
+      <div class="pakiety">
+        <article>
+          <h3>Kadr</h3>
+          <p class="pakiety__cena">1290 zł</p>
+          <ul>
+            <li>1 godzina w studiu</li>
+            <li>8 zdjęć po obróbce</li>
+          </ul>
+        </article>
+        <article>
+          <h3>Seria</h3>
+          <p class="pakiety__cena">2290 zł</p>
+          <ul>
+            <li>2,5 godziny w studiu</li>
+            <li>15 zdjęć po obróbce</li>
+            <li>czas na zmianę stylizacji</li>
+          </ul>
+        </article>
+        <article>
+          <h3>Opowieść</h3>
+          <p class="pakiety__cena">4490 zł</p>
+          <ul>
+            <li>4 godziny w studiu</li>
+            <li>25 zdjęć po obróbce</li>
+            <li>makijaż i fryzura od wizażystki w cenie</li>
+          </ul>
+        </article>
+      </div>
+      <div class="tekst dodatki">
+        <p>Każde dodatkowe zdjęcie po obróbce kosztuje 100 zł. Jeśli potrzebujesz zdjęć szybciej, oddam je w 7 dni zamiast 21 za dopłatą 20% ceny pakietu. Sesje w weekend są bez dopłaty.</p>
       </div>
     </section>
 
@@ -85,12 +122,12 @@
       <div class="voucher__uklad">
         <div class="tekst">
           <h2 class="naglowek" id="voucher-tytul">Sesja na prezent</h2>
-          <p>Voucher kupisz tutaj i od razu dostaniesz go mailem jako PDF do wydrukowania albo przesłania dalej. Jest ważny 12 miesięcy, a osoba obdarowana sama wybiera termin.</p>
+          <p>Voucher kupisz tutaj i od razu dostaniesz go mailem jako PDF do wydrukowania albo przesłania dalej. Do wyboru jest Kadr, Seria albo Opowieść. Voucher jest ważny 12 miesięcy, a osoba obdarowana sama wybiera termin.</p>
           <p class="cicho">Sprzedaż voucherów ruszy wkrótce.</p>
         </div>
         <div class="voucher__karta" aria-hidden="true">
           <span>Voucher na sesję</span>
-          <strong>Portret w studiu</strong>
+          <strong>Seria</strong>
           <span>Ważny 12 miesięcy, kod VC-XXXX</span>
         </div>
       </div>
@@ -128,6 +165,16 @@
             <label><input type="radio" name="rodzaj" value="Jeszcze nie wiem"><span>Jeszcze nie wiem</span></label>
           </div>
         </fieldset>
+
+        <div class="pole">
+          <label for="pakiet">Pakiet (nieobowiązkowo)</label>
+          <select id="pakiet" name="pakiet">
+            <option value="">Jeszcze nie wiem</option>
+            <option>Kadr – 1 godzina, 8 zdjęć, 1290 zł</option>
+            <option>Seria – 2,5 godziny, 15 zdjęć, 2290 zł</option>
+            <option>Opowieść – 4 godziny, 25 zdjęć, makijaż, 4490 zł</option>
+          </select>
+        </div>
 
         <div class="pole">
           <label for="terminy">Preferowane terminy</label>

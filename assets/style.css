@@ -189,6 +189,22 @@ main > section { padding: clamp(4rem, 10vw, 8rem) var(--margines); }
 }
 .oferta p { max-width: 30rem; margin: 0 0 1rem; }
 
+/* Pakiety: trzy kolumny jak na stykówce, cena dużym krojem */
+.pakiety {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid var(--linia);
+  margin-top: 3rem;
+}
+.pakiety article { padding: 2rem clamp(1rem, 3vw, 2.5rem) 0; }
+.pakiety article:first-child { padding-left: 0; }
+.pakiety article + article { border-left: 1px solid var(--linia); }
+.pakiety h3 { font-family: var(--serif); font-weight: 400; font-size: clamp(1.75rem, 4vw, 2.5rem); margin: 0; line-height: 1.1; }
+.pakiety__cena { font-family: var(--serif); font-size: clamp(1.25rem, 2.5vw, 1.5rem); margin: 0.5rem 0 1.25rem; }
+.pakiety ul { list-style: none; margin: 0; padding: 0; }
+.pakiety li { padding: 0.5rem 0; border-top: 1px solid var(--linia); }
+.dodatki { margin-top: 2.5rem; }
+main > section#cennik { padding-top: 0; }
+
 /* Przebieg sesji: to naprawdę jest sekwencja, więc numerujemy */
 .przebieg {
   list-style: none; margin: 3rem 0 0; padding: 0;
@@ -293,6 +309,9 @@ fieldset { border: 0; margin: 0; padding: 0; }
   .cyklo__opis { grid-row: auto; padding-bottom: 0; margin-top: 2rem; }
   .cyklo__nazwisko span + span { padding-left: 0.35em; }
   .oferta { grid-template-columns: 1fr; }
+  .pakiety { grid-template-columns: 1fr; }
+  .pakiety article { padding-left: 0; }
+  .pakiety article + article { border-left: 0; border-top: 1px solid var(--linia); margin-top: 2rem; }
   .oferta article + article { border-left: 0; border-top: 1px solid var(--linia); padding-left: 0; margin-top: 2rem; }
   .przebieg { grid-template-columns: 1fr; }
   .para { grid-template-columns: 1fr; }
