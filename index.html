@@ -153,8 +153,8 @@
       <div class="voucher__uklad">
         <div class="tekst">
           <h2 class="naglowek" id="voucher-tytul">Sesja na prezent</h2>
-          <p>Voucher kupisz tutaj i od razu dostaniesz go mailem jako PDF do wydrukowania albo przesłania dalej. Do wyboru jest Kadr, Seria albo Opowieść. Voucher jest ważny 12 miesięcy, a osoba obdarowana sama wybiera termin.</p>
-          <p class="cicho">Sprzedaż voucherów ruszy wkrótce.</p>
+          <p>Do wyboru jest Kadr, Seria albo Opowieść. Voucher jest ważny 12 miesięcy, a osoba obdarowana sama wybiera rodzaj sesji i termin.</p>
+          <p>Zamów go przez formularz poniżej. W ciągu doby odpiszę z danymi do przelewu albo BLIK-a, a po wpłacie wyślę voucher jako PDF do wydrukowania albo przesłania dalej.</p>
         </div>
         <div class="voucher__karta" aria-hidden="true">
           <span>Voucher na sesję</span>
@@ -162,6 +162,50 @@
           <span>Ważny 12 miesięcy, kod VC-XXXX</span>
         </div>
       </div>
+
+      <form class="formularz" id="formularz-voucher" action="/api/voucher" method="post" novalidate data-sukces="Zamówienie wysłane. W ciągu doby odpiszę z danymi do płatności.">
+        <div class="pole">
+          <label for="v-pakiet">Pakiet na voucherze</label>
+          <select id="v-pakiet" name="pakiet" required>
+            <option value="">Wybierz</option>
+            <option>Kadr – 1290 zł</option>
+            <option>Seria – 2290 zł</option>
+            <option>Opowieść – 4490 zł</option>
+          </select>
+        </div>
+        <div class="para">
+          <div class="pole">
+            <label for="v-imie">Imię i nazwisko</label>
+            <input type="text" id="v-imie" name="imie" autocomplete="name" required>
+          </div>
+          <div class="pole">
+            <label for="v-email">E-mail</label>
+            <input type="email" id="v-email" name="email" autocomplete="email" required>
+          </div>
+        </div>
+        <div class="pole">
+          <label for="v-dla">Dla kogo (nieobowiązkowo)</label>
+          <input type="text" id="v-dla" name="dla" autocomplete="off">
+          <small>Imię, które mam wpisać na voucherze. Zostaw puste, jeśli voucher ma być bez imienia.</small>
+        </div>
+        <div class="pole">
+          <label for="v-faktura">Dane do faktury (nieobowiązkowo)</label>
+          <textarea id="v-faktura" name="faktura" rows="2"></textarea>
+          <small>Wpisz nazwę firmy i NIP, jeśli faktura ma być na firmę. W przeciwnym razie wystawię ją na imię i nazwisko.</small>
+        </div>
+        <div class="ukryte" aria-hidden="true">
+          <label for="v-strona">Nie wypełniaj tego pola</label>
+          <input type="text" id="v-strona" name="strona" tabindex="-1" autocomplete="off">
+        </div>
+        <label class="zgoda">
+          <input type="checkbox" name="regulamin" value="tak" required>
+          <span>Akceptuję <a href="/regulamin/">regulamin</a> i znam <a href="/polityka-prywatnosci/">politykę prywatności</a>.</span>
+        </label>
+        <div>
+          <button class="przycisk" type="submit">Zamów voucher</button>
+        </div>
+        <p class="komunikat" role="status" hidden></p>
+      </form>
     </section>
 
     <section id="zapytanie" aria-labelledby="zapytanie-tytul">
@@ -170,7 +214,7 @@
         <p>Odpowiadam w ciągu doby. Wysłanie formularza niczego jeszcze nie rezerwuje – termin i pakiet ustalimy razem.</p>
       </div>
 
-      <form class="formularz" id="formularz" action="/api/zapytanie" method="post" novalidate>
+      <form class="formularz" id="formularz" action="/api/zapytanie" method="post" novalidate data-sukces="Zapytanie wysłane. Odpowiem w ciągu doby.">
         <div class="pole">
           <label for="imie">Imię</label>
           <input type="text" id="imie" name="imie" autocomplete="given-name" required>
@@ -252,7 +296,7 @@
         <div>
           <button class="przycisk" type="submit">Wyślij zapytanie</button>
         </div>
-        <p class="komunikat" id="komunikat" role="status" hidden></p>
+        <p class="komunikat" role="status" hidden></p>
       </form>
     </section>
   </main>
