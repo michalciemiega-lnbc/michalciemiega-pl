@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Michał Ciemięga – sesje portretowe i sylwetkowe w studiu, Warszawa</title>
+  <meta name="description" content="Studyjne sesje portretowe i sylwetkowe na cyklo w Warszawie. Zapytaj o termin albo kup voucher na sesję.">
+  <!-- Strona w budowie: usunąć noindex w dniu startu -->
+  <meta name="robots" content="noindex">
+  <link rel="preload" href="/assets/fonts/bodoni-moda-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+  <a class="skip" href="#tresc">Przejdź do treści</a>
+
+  <header class="belka">
+    <a class="belka__znak" href="/">Michał Ciemięga</a>
+    <nav aria-label="Główna">
+      <a href="#oferta">Oferta</a>
+      <a href="#przebieg">Jak to wygląda</a>
+      <a href="#voucher">Voucher</a>
+      <a href="#zapytanie">Zapytaj o termin</a>
+    </nav>
+  </header>
+
+  <main id="tresc">
+    <section class="cyklo" aria-labelledby="nazwisko">
+      <h1 class="cyklo__nazwisko" id="nazwisko"><span>Michał</span><span>Ciemięga</span></h1>
+      <figure class="cyklo__kadr">
+        <!-- Miejsce na główne zdjęcie (portret, pion 4:5, czarno-białe) -->
+        <figcaption>Tu stanie główne zdjęcie</figcaption>
+      </figure>
+      <div class="cyklo__opis">
+        <p>Portret i sylwetka w studiu, na jasnym cyklo. Spokojna sesja, światło ustawione pod Ciebie i zdjęcia, które chce się powiesić na ścianie.</p>
+        <a class="przycisk" href="#zapytanie">Zapytaj o termin</a>
+      </div>
+    </section>
+
+    <section id="oferta" aria-labelledby="oferta-tytul">
+      <h2 class="naglowek" id="oferta-tytul">Dwa rodzaje sesji</h2>
+      <div class="tekst">
+        <p>Fotografuję w studiu w Warszawie. Nie musisz mieć doświadczenia przed obiektywem – prowadzę Cię przez całą sesję.</p>
+      </div>
+      <div class="oferta">
+        <article>
+          <h3>Portret</h3>
+          <p>Twarz, spojrzenie, ramiona. Zdjęcie dla siebie, na prezent albo do profilu zawodowego.</p>
+          <p class="cicho">Pakiety i ceny pojawią się wkrótce.</p>
+        </article>
+        <article>
+          <h3>Sylwetka</h3>
+          <p>Cała postać na cyklo: ruch, linia ciała, ubranie, które lubisz. Bez dekoracji, tylko Ty i światło.</p>
+          <p class="cicho">Pakiety i ceny pojawią się wkrótce.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="przebieg" aria-labelledby="przebieg-tytul">
+      <h2 class="naglowek" id="przebieg-tytul">Od pytania do gotowych zdjęć</h2>
+      <ol class="przebieg">
+        <li>
+          <h3>Zapytanie</h3>
+          <p>Wypełniasz krótki formularz: rodzaj sesji, pasujące terminy i to, do czego potrzebujesz zdjęć.</p>
+        </li>
+        <li>
+          <h3>Odpowiedź w ciągu doby</h3>
+          <p>Ustalamy pakiet, termin i szczegóły. Dostajesz potwierdzenie mailem i fakturę.</p>
+        </li>
+        <li>
+          <h3>Sesja w studiu</h3>
+          <p>Rozmawiamy, ustawiam światło i fotografujemy. Możesz przerwać w każdej chwili.</p>
+        </li>
+        <li>
+          <h3>Wybór zdjęć</h3>
+          <p>W ciągu 3 dni roboczych dostajesz galerię online i wybierasz zdjęcia do obróbki.</p>
+        </li>
+        <li>
+          <h3>Gotowe zdjęcia</h3>
+          <p>Do 21 dni od wyboru dostajesz link do pobrania obrobionych zdjęć.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section id="voucher" class="voucher" aria-labelledby="voucher-tytul">
+      <div class="voucher__uklad">
+        <div class="tekst">
+          <h2 class="naglowek" id="voucher-tytul">Sesja na prezent</h2>
+          <p>Voucher kupisz tutaj i od razu dostaniesz go mailem jako PDF do wydrukowania albo przesłania dalej. Jest ważny 12 miesięcy, a osoba obdarowana sama wybiera termin.</p>
+          <p class="cicho">Sprzedaż voucherów ruszy wkrótce.</p>
+        </div>
+        <div class="voucher__karta" aria-hidden="true">
+          <span>Voucher na sesję</span>
+          <strong>Portret w studiu</strong>
+          <span>Ważny 12 miesięcy, kod VC-XXXX</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="zapytanie" aria-labelledby="zapytanie-tytul">
+      <h2 class="naglowek" id="zapytanie-tytul">Zapytaj o termin</h2>
+      <div class="tekst">
+        <p>Odpowiadam w ciągu doby. Wysłanie formularza niczego jeszcze nie rezerwuje – termin i pakiet ustalimy razem.</p>
+      </div>
+
+      <form class="formularz" id="formularz" action="/api/zapytanie" method="post" novalidate>
+        <div class="pole">
+          <label for="imie">Imię</label>
+          <input type="text" id="imie" name="imie" autocomplete="given-name" required>
+        </div>
+
+        <div class="para">
+          <div class="pole">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" autocomplete="email">
+          </div>
+          <div class="pole">
+            <label for="telefon">Telefon</label>
+            <input type="tel" id="telefon" name="telefon" autocomplete="tel">
+          </div>
+        </div>
+        <p class="cicho" style="margin:-0.75rem 0 0;font-size:.875rem">Wystarczy jedno z dwóch: e-mail albo telefon.</p>
+
+        <fieldset class="pole">
+          <legend>Rodzaj sesji</legend>
+          <div class="wybor">
+            <label><input type="radio" name="rodzaj" value="Portret" required><span>Portret</span></label>
+            <label><input type="radio" name="rodzaj" value="Sylwetka"><span>Sylwetka</span></label>
+            <label><input type="radio" name="rodzaj" value="Jeszcze nie wiem"><span>Jeszcze nie wiem</span></label>
+          </div>
+        </fieldset>
+
+        <div class="pole">
+          <label for="terminy">Preferowane terminy</label>
+          <textarea id="terminy" name="terminy" rows="3" required></textarea>
+          <small>Na przykład: weekendy w grudniu albo wtorki po 17.</small>
+        </div>
+
+        <div class="pole">
+          <label for="cel">Do czego potrzebujesz zdjęć?</label>
+          <textarea id="cel" name="cel" rows="3" required></textarea>
+          <small>Dla siebie, na prezent, do profilu zawodowego – cokolwiek, co pomoże mi przygotować sesję.</small>
+        </div>
+
+        <div class="pole">
+          <label for="doswiadczenie">Doświadczenie przed obiektywem (nieobowiązkowo)</label>
+          <select id="doswiadczenie" name="doswiadczenie">
+            <option value="">Wybierz</option>
+            <option>To będzie moja pierwsza sesja</option>
+            <option>Miałam już kilka sesji</option>
+            <option>Pozuję regularnie</option>
+          </select>
+        </div>
+
+        <div class="pole">
+          <label for="voucher-kod">Kod vouchera (jeśli masz)</label>
+          <input type="text" id="voucher-kod" name="voucher" autocomplete="off">
+        </div>
+
+        <div class="ukryte" aria-hidden="true">
+          <label for="strona">Nie wypełniaj tego pola</label>
+          <input type="text" id="strona" name="strona" tabindex="-1" autocomplete="off">
+        </div>
+
+        <label class="zgoda">
+          <input type="checkbox" name="polityka" value="tak" required>
+          <span>Zapoznałam się z <a href="/polityka-prywatnosci/">polityką prywatności</a>.</span>
+        </label>
+
+        <div>
+          <button class="przycisk" type="submit">Wyślij zapytanie</button>
+        </div>
+        <p class="komunikat" id="komunikat" role="status" hidden></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="stopka">
+    <p>Consulting Services Michał Ciemięga<br>ul. Tagore 5/15, 02-647 Warszawa<br>NIP 679-278-90-05</p>
+    <p><a href="mailto:michal@michalciemiega.pl">michal@michalciemiega.pl</a></p>
+    <p><a href="/regulamin/">Regulamin</a><br><a href="/polityka-prywatnosci/">Polityka prywatności</a></p>
+  </footer>
+
+  <script src="/assets/formularz.js" defer></script>
+</body>
+</html>
