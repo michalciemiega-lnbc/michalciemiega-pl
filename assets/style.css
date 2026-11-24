@@ -189,6 +189,23 @@ main > section { padding: clamp(4rem, 10vw, 8rem) var(--margines); }
 }
 .oferta p { max-width: 30rem; margin: 0 0 1rem; }
 
+/* Rodzaje sesji: zwarta lista, nazwa po lewej, jedno zdanie po prawej */
+.rodzaje { list-style: none; margin: 3rem 0 0; padding: 0; border-top: 1px solid var(--linia); }
+.rodzaje li { border-bottom: 1px solid var(--linia); }
+.rodzaje a {
+  display: grid; grid-template-columns: minmax(12rem, 22rem) 1fr; gap: 1rem 2rem; align-items: baseline;
+  padding: 1.25rem 0; text-decoration: none;
+}
+.rodzaje h3 { font-family: var(--serif); font-weight: 400; font-size: clamp(1.5rem, 3vw, 2rem); margin: 0; line-height: 1.15; }
+.rodzaje p { margin: 0; max-width: 34rem; color: var(--srebro); }
+.rodzaje a:hover h3, .rodzaje a:focus-visible h3 { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.15em; }
+
+/* Podstrona rodzaju sesji */
+.sesja h1 { margin-top: 0.5rem; }
+.sesja__lead { font-family: var(--serif); font-size: clamp(1.25rem, 2.5vw, 1.625rem); line-height: 1.35; margin: 0 0 2rem; }
+.sesja__akcje { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 2.5rem 0 1rem; }
+.sesja__inne { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; }
+
 /* Pakiety: trzy kolumny jak na stykówce, cena dużym krojem */
 .pakiety {
   display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -199,7 +216,8 @@ main > section { padding: clamp(4rem, 10vw, 8rem) var(--margines); }
 .pakiety article:first-child { padding-left: 0; }
 .pakiety article + article { border-left: 1px solid var(--linia); }
 .pakiety h3 { font-family: var(--serif); font-weight: 400; font-size: clamp(1.75rem, 4vw, 2.5rem); margin: 0; line-height: 1.1; }
-.pakiety__cena { font-family: var(--serif); font-size: clamp(1.25rem, 2.5vw, 1.5rem); margin: 0.5rem 0 1.25rem; }
+.pakiety__cena { font-family: var(--serif); font-size: clamp(1.25rem, 2.5vw, 1.5rem); margin: 0.5rem 0 1rem; }
+.pakiety__opis { margin: 0 0 1.25rem; color: var(--srebro); max-width: 26rem; }
 .pakiety ul { list-style: none; margin: 0; padding: 0; }
 .pakiety li { padding: 0.5rem 0; border-top: 1px solid var(--linia); }
 .dodatki { margin-top: 2.5rem; }
@@ -309,6 +327,7 @@ fieldset { border: 0; margin: 0; padding: 0; }
   .cyklo__opis { grid-row: auto; padding-bottom: 0; margin-top: 2rem; }
   .cyklo__nazwisko span + span { padding-left: 0.35em; }
   .oferta { grid-template-columns: 1fr; }
+  .rodzaje a { grid-template-columns: 1fr; gap: 0.4rem; }
   .pakiety { grid-template-columns: 1fr; }
   .pakiety article { padding-left: 0; }
   .pakiety article + article { border-left: 0; border-top: 1px solid var(--linia); margin-top: 2rem; }

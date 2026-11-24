@@ -6,6 +6,13 @@
   const komunikat = document.getElementById("komunikat");
   const przycisk = form.querySelector('button[type="submit"]');
 
+  // Podstrony rodzajów sesji linkują tu z ?rodzaj=..., więc zaznaczamy ten rodzaj.
+  const wybrany = new URLSearchParams(location.search).get("rodzaj");
+  const lista = document.getElementById("rodzaj");
+  if (wybrany && lista) {
+    for (const o of lista.options) if (o.text === wybrany) o.selected = true;
+  }
+
   function pokaz(tekst) {
     komunikat.textContent = tekst;
     komunikat.hidden = false;

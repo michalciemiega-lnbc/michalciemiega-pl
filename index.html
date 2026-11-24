@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Michał Ciemięga – sesje portretowe i sylwetkowe w studiu, Warszawa</title>
-  <meta name="description" content="Studyjne sesje portretowe i sylwetkowe na cyklo w Warszawie. Zapytaj o termin albo kup voucher na sesję.">
+  <meta name="description" content="Sesje portretowe i kobiece w studiu w Warszawie. Zapytaj o termin albo kup voucher na sesję.">
   <!-- Strona w budowie: usunąć noindex w dniu startu -->
   <meta name="robots" content="noindex">
   <link rel="preload" href="/assets/fonts/bodoni-moda-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
@@ -16,7 +16,7 @@
   <header class="belka">
     <a class="belka__znak" href="/">Michał Ciemięga</a>
     <nav aria-label="Główna">
-      <a href="#oferta">Oferta</a>
+      <a href="#oferta">Rodzaje sesji</a>
       <a href="#cennik">Cennik</a>
       <a href="#przebieg">Jak to wygląda</a>
       <a href="#voucher">Voucher</a>
@@ -32,37 +32,60 @@
         <figcaption>Tu stanie główne zdjęcie</figcaption>
       </figure>
       <div class="cyklo__opis">
-        <p>Portret i sylwetka w studiu, na jasnym cyklo. Spokojna sesja, światło ustawione pod Ciebie i zdjęcia, które chce się powiesić na ścianie.</p>
+        <p>Sesje portretowe i kobiece w studiu w Warszawie. Spokojne tempo, światło ustawione pod Ciebie i zdjęcia, które chce się powiesić na ścianie.</p>
         <a class="przycisk" href="#zapytanie">Zapytaj o termin</a>
       </div>
     </section>
 
     <section id="oferta" aria-labelledby="oferta-tytul">
-      <h2 class="naglowek" id="oferta-tytul">Dwa rodzaje sesji</h2>
+      <h2 class="naglowek" id="oferta-tytul">Rodzaje sesji</h2>
       <div class="tekst">
-        <p>Fotografuję w studiu w Warszawie. Nie musisz mieć doświadczenia przed obiektywem – prowadzę Cię przez całą sesję.</p>
+        <p>Nie musisz mieć doświadczenia przed obiektywem – prowadzę Cię przez całą sesję. Wybierz kierunek, a szczegóły ustalimy razem.</p>
       </div>
-      <div class="oferta">
-        <article>
-          <h3>Portret</h3>
-          <p>Twarz, spojrzenie, ramiona. Zdjęcie dla siebie, na prezent albo do profilu zawodowego.</p>
-        </article>
-        <article>
-          <h3>Sylwetka</h3>
-          <p>Cała postać na cyklo: ruch, linia ciała, ubranie, które lubisz. Bez dekoracji, tylko Ty i światło.</p>
-        </article>
-      </div>
+      <ul class="rodzaje">
+        <li>
+          <a href="/sesje/portret/">
+            <h3>Portret</h3>
+            <p>Twarz, spojrzenie, ramiona. Na pamiątkę, na prezent albo do profilu zawodowego.</p>
+          </a>
+        </li>
+        <li>
+          <a href="/sesje/portret-w-polmroku/">
+            <h3>Portret w półmroku</h3>
+            <p>Ciemne tło i jedno światło, które wydobywa z cienia tylko to, co najważniejsze.</p>
+          </a>
+        </li>
+        <li>
+          <a href="/sesje/sylwetka/">
+            <h3>Sylwetka i kontur</h3>
+            <p>Cała postać na jasnym tle albo sam jej zarys, narysowany światłem.</p>
+          </a>
+        </li>
+        <li>
+          <a href="/sesje/sensualna/">
+            <h3>Sesja sensualna</h3>
+            <p>Kobiecość bez pośpiechu: bielizna, tkanina, gest. Ty decydujesz, ile pokazujesz.</p>
+          </a>
+        </li>
+        <li>
+          <a href="/sesje/akt-zakryty/">
+            <h3>Akt zakryty</h3>
+            <p>Nagość schowana w cieniu, w dłoniach i w kadrze. Na zdjęciach zostaje forma, światło i linia.</p>
+          </a>
+        </li>
+      </ul>
     </section>
 
     <section id="cennik" aria-labelledby="cennik-tytul">
       <h2 class="naglowek" id="cennik-tytul">Trzy pakiety</h2>
       <div class="tekst">
-        <p>Każdy pakiet możesz wykorzystać na portret, sylwetkę albo jedno i drugie. W cenie jest wynajem studia i obróbka wybranych zdjęć.</p>
+        <p>Każdy pakiet możesz wykorzystać na dowolny rodzaj sesji, także łącząc kilka. W cenie jest wynajem studia i obróbka wybranych zdjęć.</p>
       </div>
       <div class="pakiety">
         <article>
           <h3>Kadr</h3>
           <p class="pakiety__cena">1290 zł</p>
+          <p class="pakiety__opis">Jedno spotkanie, jedno światło i kilka ujęć, które zostaną na lata. Dobry początek, jeśli pierwszy raz stajesz przed obiektywem.</p>
           <ul>
             <li>1 godzina w studiu</li>
             <li>8 zdjęć po obróbce</li>
@@ -71,6 +94,7 @@
         <article>
           <h3>Seria</h3>
           <p class="pakiety__cena">2290 zł</p>
+          <p class="pakiety__opis">Więcej czasu, żeby się rozgościć i zmienić stylizację. Z każdym kwadransem jest mniej pozowania, a więcej Ciebie.</p>
           <ul>
             <li>2,5 godziny w studiu</li>
             <li>15 zdjęć po obróbce</li>
@@ -80,6 +104,7 @@
         <article>
           <h3>Opowieść</h3>
           <p class="pakiety__cena">4490 zł</p>
+          <p class="pakiety__opis">Pół dnia tylko dla Ciebie: makijaż, fryzura, kilka nastrojów i światło, które zmienia się razem z nimi.</p>
           <ul>
             <li>4 godziny w studiu</li>
             <li>25 zdjęć po obróbce</li>
@@ -157,14 +182,18 @@
         </div>
         <p class="cicho" style="margin:-0.75rem 0 0;font-size:.875rem">Wystarczy jedno z dwóch: e-mail albo telefon.</p>
 
-        <fieldset class="pole">
-          <legend>Rodzaj sesji</legend>
-          <div class="wybor">
-            <label><input type="radio" name="rodzaj" value="Portret" required><span>Portret</span></label>
-            <label><input type="radio" name="rodzaj" value="Sylwetka"><span>Sylwetka</span></label>
-            <label><input type="radio" name="rodzaj" value="Jeszcze nie wiem"><span>Jeszcze nie wiem</span></label>
-          </div>
-        </fieldset>
+        <div class="pole">
+          <label for="rodzaj">Rodzaj sesji</label>
+          <select id="rodzaj" name="rodzaj" required>
+            <option value="">Wybierz</option>
+            <option>Portret</option>
+            <option>Portret w półmroku</option>
+            <option>Sylwetka i kontur</option>
+            <option>Sesja sensualna</option>
+            <option>Akt zakryty</option>
+            <option>Jeszcze nie wiem</option>
+          </select>
+        </div>
 
         <div class="pole">
           <label for="pakiet">Pakiet (nieobowiązkowo)</label>
