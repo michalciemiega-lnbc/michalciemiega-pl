@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vouchery – panel</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="/assets/style.css">
+  <style>
+    .panel { padding: 2rem var(--margines) 4rem; }
+    .panel h1 { font-family: var(--serif); font-weight: 400; font-size: 2.25rem; margin: 0 0 1.5rem; }
+    .panel h2 { font-family: var(--serif); font-weight: 400; font-size: 1.5rem; margin: 3rem 0 1rem; }
+    .lista { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--linia); }
+    .lista li { border-bottom: 1px solid var(--linia); padding: 1rem 0; display: grid; gap: 0.4rem; }
+    .lista .kod { font-weight: 600; letter-spacing: 0.02em; }
+    .lista .opis { color: var(--srebro); font-size: 0.9375rem; }
+    .lista .akcje { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.25rem; }
+    .lista button, .lista a.maly { font: 500 0.875rem/1 var(--sans); padding: 0.6rem 0.9rem; border: 1px solid var(--grafit); background: transparent; color: var(--grafit); text-decoration: none; cursor: pointer; }
+    .lista button:hover, .lista a.maly:hover { background: var(--grafit); color: var(--papier); }
+    .zrealizowany { opacity: 0.55; }
+    .filtr { display: flex; gap: 1rem; align-items: center; margin-bottom: 1rem; font-size: 0.9375rem; }
+  </style>
+</head>
+<body>
+  <main class="panel">
+    <h1>Vouchery</h1>
+
+    <form class="formularz" id="nowy" novalidate>
+      <div class="para">
+        <div class="pole">
+          <label for="pakiet">Pakiet</label>
+          <select id="pakiet" name="pakiet" required>
+            <option value="">Wybierz</option>
+            <option>Kadr</option>
+            <option>Seria</option>
+            <option>Opowieść</option>
+          </select>
+        </div>
+        <div class="pole">
+          <label for="data_zakupu">Data zakupu</label>
+          <input type="text" id="data_zakupu" name="data_zakupu" inputmode="numeric" placeholder="RRRR-MM-DD">
+        </div>
+      </div>
+      <div class="para">
+        <div class="pole">
+          <label for="kupujaca">Kupująca</label>
+          <input type="text" id="kupujaca" name="kupujaca" required>
+        </div>
+        <div class="pole">
+          <label for="email">E-mail kupującej</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+      </div>
+      <div class="pole">
+        <label for="dla">Imię na voucherze (nieobowiązkowo)</label>
+        <input type="text" id="dla" name="dla">
+        <small>W formie „Dla …”, na przykład „Anny”.</small>
+      </div>
+      <div><button class="przycisk" type="submit">Utwórz voucher</button></div>
+      <p class="komunikat" role="status" hidden></p>
+    </form>
+
+    <h2>Wydane vouchery</h2>
+    <label class="filtr"><input type="checkbox" id="pokazZrealizowane"> Pokaż zrealizowane</label>
+    <ul class="lista" id="lista"><li class="opis">Wczytywanie…</li></ul>
+  </main>
+
+  <script>
+  (function () {
+    const MIES = ["stycznia","lutego","marca","kwietnia","maja","czerwca","lipca","sierpnia","września","października","listopada","grudnia"];
+    const slownie = (iso) => { if (!iso) return ""; const [r,m,d] = iso.slice(0,10).split("-").map(Number); return `${d} ${MIES[m-1]} ${r}`; };
+    const dzis = new Date().toISOString().slice(0,10);
+    document.getElementById("data_zakupu").value = dzis;
+
+    const form = document.getElementById("nowy");
+    const kom = form.querySelector(".komunikat");
+    const pokaz = (t) => { kom.textContent = t; kom.hidden = false; };
+    const lista = document.getElementById("lista");
+    const filtr = document.getElementById("pokazZrealizowane");
+
+    async function api(url, opcje) {
+      const r = await fetch(url, opcje);
+      const j = await r.json().catch(() => ({}));
+      if (!r.ok) throw new Error(j.komunikat || "Błąd " + r.status);
+      return j;
+    }
+
+    function el(tag, tekst, klasa) { const e = document.createElement(tag); if (tekst) e.textContent = tekst; if (klasa) e.className = klasa; return e; }
+
+    async function wczytaj() {
+      try {
+        const { vouchery } = await api("/api/admin/vouchery");
+        lista.innerHTML = "";
+        const widoczne = vouchery.filter(v => filtr.checked || !v.zrealizowany_at);
+        if (!widoczne.length) { lista.appendChild(el("li", "Brak voucherów do pokazania.", "opis")); return; }
+        for (const v of widoczne) {
+          const li = el("li", "", v.zrealizowany_at ? "zrealizowany" : "");
+          li.appendChild(el("span", `${v.kod}  ${v.pakiet}`, "kod"));
+          const opis = [`${v.kupujaca}, ${v.email}`, v.dla ? `dla ${v.dla}` : "", `ważny do ${slownie(v.wazny_do)}${v.przedluzony ? " (przedłużony)" : ""}`,
+            v.wyslany_at ? `wysłany ${slownie(v.wyslany_at)}` : "jeszcze niewysłany", v.zrealizowany_at ? `zrealizowany ${slownie(v.zrealizowany_at)}` : ""].filter(Boolean).join(". ") + ".";
+          li.appendChild(el("span", opis, "opis"));
+          const akcje = el("div", "", "akcje");
+          const pdf = el("a", "Pobierz PDF", "maly"); pdf.href = `/api/admin/vouchery/${v.kod}/pdf`; pdf.target = "_blank"; akcje.appendChild(pdf);
+          const przyciski = [
+            ["Wyślij do kupującej", async () => { if (!confirmuj(`Wysłać voucher ${v.kod} na ${v.email}?`)) return; return api(`/api/admin/vouchery/${v.kod}/wyslij`, { method: "POST" }); }],
+            v.zrealizowany_at ? ["Cofnij realizację", () => status(v.kod, "cofnij")] : ["Oznacz jako zrealizowany", () => status(v.kod, "zrealizuj")],
+          ];
+          if (!v.przedluzony) przyciski.push(["Przedłuż o 3 miesiące", () => status(v.kod, "przedluz")]);
+          for (const [nazwa, fn] of przyciski) {
+            const b = el("button", nazwa); b.type = "button";
+            b.addEventListener("click", async () => {
+              b.disabled = true;
+              try { const j = await fn(); if (j && j.komunikat) pokaz(j.komunikat); await wczytaj(); }
+              catch (e) { pokaz(e.message); b.disabled = false; }
+            });
+            akcje.appendChild(b);
+          }
+          li.appendChild(akcje);
+          lista.appendChild(li);
+        }
+      } catch (e) {
+        lista.innerHTML = ""; lista.appendChild(el("li", "Nie udało się wczytać listy: " + e.message, "opis"));
+      }
+    }
+
+    // Potwierdzenie bez okienka przeglądarki: drugie kliknięcie w ciągu 5 sekund.
+    const oczekujace = new Map();
+    function confirmuj(pytanie) {
+      if (oczekujace.has(pytanie) && Date.now() - oczekujace.get(pytanie) < 5000) { oczekujace.delete(pytanie); return true; }
+      oczekujace.set(pytanie, Date.now()); pokaz(pytanie + " Kliknij jeszcze raz, żeby potwierdzić."); return false;
+    }
+
+    const status = (kod, akcja) => api(`/api/admin/vouchery/${kod}/status`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ akcja }) });
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const dane = Object.fromEntries(new FormData(form));
+      try {
+        const { kod } = await api("/api/admin/vouchery", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(dane) });
+        form.reset(); document.getElementById("data_zakupu").value = dzis;
+        pokaz(`Utworzono voucher ${kod}. Możesz pobrać PDF albo wysłać go kupującej z listy poniżej.`);
+        await wczytaj();
+      } catch (err) { pokaz(err.message); }
+    });
+    filtr.addEventListener("change", wczytaj);
+    wczytaj();
+  })();
+  </script>
+</body>
+</html>
