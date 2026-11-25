@@ -128,21 +128,13 @@ a:hover { text-decoration-thickness: 2px; }
 
 .cyklo__kadr {
   grid-column: 2; grid-row: 1 / span 2;
-  align-self: end;
-  margin: 0;
-  aspect-ratio: 4 / 5;
-  width: 100%;
-  max-width: 30rem;
-  justify-self: end;
-  margin-top: clamp(5rem, 11vw, 10rem);
-  background: linear-gradient(180deg, #bdbbb7, #9c9a96);
-  display: grid; place-items: end start;
-  position: relative;
+  align-self: end; justify-self: end;
+  margin: clamp(5rem, 11vw, 10rem) 0 0;
+  /* szerokość z wysokości ekranu, żeby całe zdjęcie mieściło się na pierwszym widoku */
+  width: min(100%, 30rem, calc((100svh - 8rem) * 0.8));
+  background: var(--cyklo);
 }
-.cyklo__kadr img {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%; object-fit: cover;
-}
+.cyklo__kadr img { display: block; width: 100%; height: auto; }
 
 /* ---------- Przyciski ---------- */
 
@@ -254,17 +246,27 @@ main > section#cennik { padding-top: 0; }
 
 /* Voucher */
 .voucher { background: var(--cyklo); }
-.voucher__uklad { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 6vw, 5rem); align-items: center; }
-.voucher__karta {
-  aspect-ratio: 210 / 99;
-  background: var(--papier);
-  border: 1px solid var(--cyklo-cien);
-  padding: clamp(1rem, 3vw, 2rem);
-  display: flex; flex-direction: column; justify-content: space-between;
-  max-width: 32rem;
+.voucher__karta { margin: 2.5rem 0 0; }
+
+/* Sekcje z formularzem: opis po lewej, formularz po prawej */
+.dwie-kolumny {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  column-gap: clamp(2rem, 6vw, 6rem); align-items: start;
 }
-.voucher__karta strong { font-family: var(--serif); font-weight: 400; font-size: clamp(1.5rem, 3.5vw, 2.25rem); line-height: 1; }
-.voucher__karta span { font-size: 0.8125rem; color: var(--srebro); }
+.dwie-kolumny__opis { position: sticky; top: 6rem; }
+.dwie-kolumny .formularz { margin-top: 0; max-width: none; }
+.dwie-kolumny__kadr { margin: 2.5rem 0 0; max-width: 26rem; }
+.dwie-kolumny__kadr img { display: block; width: 100%; height: auto; background: var(--cyklo); }
+.voucher__karta img {
+  display: block; width: 100%; height: auto;
+  transform: rotate(-2deg);
+  box-shadow: 0 1px 2px rgba(31, 31, 30, 0.12), 0 18px 40px -12px rgba(31, 31, 30, 0.35);
+}
+.voucher__karta figcaption { margin-top: 1.5rem; font-size: 0.875rem; color: var(--srebro); }
+@media (prefers-reduced-motion: no-preference) {
+  .voucher__karta img { transition: transform 0.4s ease; }
+  .voucher__karta:hover img { transform: rotate(0deg); }
+}
 
 /* ---------- Formularz ---------- */
 
@@ -331,18 +333,20 @@ fieldset { border: 0; margin: 0; padding: 0; }
 /* ---------- Mniejsze ekrany ---------- */
 
 @media (max-width: 60rem) {
+  .dwie-kolumny { grid-template-columns: 1fr; }
+  .dwie-kolumny__opis { position: static; margin-bottom: 2.5rem; }
+  .dwie-kolumny__kadr { display: none; }
   .galeria { columns: 2; }
   .sesja { grid-template-columns: 1fr; }
   .sesja__tekst { grid-row: 2; }
   .sesja__kadr { grid-column: 1; position: static; margin: 0 0 2.5rem; max-width: 36rem; }
   .przebieg { grid-template-columns: 1fr 1fr; }
-  .voucher__uklad { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 40rem) {
   .belka nav a:not(:last-child) { display: none; }
   .cyklo { grid-template-columns: 1fr; padding-top: 6rem; }
-  .cyklo__kadr { grid-column: 1; grid-row: auto; margin: 2.5rem 0 0; max-width: none; justify-self: stretch; }
+  .cyklo__kadr { grid-column: 1; grid-row: auto; margin: 2.5rem 0 0; width: 100%; justify-self: stretch; }
   .cyklo__opis { grid-row: auto; padding-bottom: 0; margin-top: 2rem; }
   .cyklo__nazwisko span + span { padding-left: 0.35em; }
   .oferta { grid-template-columns: 1fr; }

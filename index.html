@@ -8,7 +8,7 @@
   <!-- Strona w budowie: usunąć noindex w dniu startu -->
   <meta name="robots" content="noindex">
   <link rel="preload" href="/assets/fonts/bodoni-moda-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/style.css">
+  <link rel="stylesheet" href="/assets/style.css?v=b68d5e73">
 </head>
 <body>
   <a class="skip" href="#tresc">Przejdź do treści</a>
@@ -164,17 +164,17 @@
     </section>
 
     <section id="voucher" class="voucher" aria-labelledby="voucher-tytul">
-      <div class="voucher__uklad">
+      <div class="dwie-kolumny">
+      <div class="dwie-kolumny__opis">
         <div class="tekst">
           <h2 class="naglowek" id="voucher-tytul">Sesja na prezent</h2>
           <p>Do wyboru jest Kadr, Seria albo Opowieść. Voucher jest ważny 12 miesięcy, a osoba obdarowana sama wybiera rodzaj sesji i termin.</p>
-          <p>Zamów go przez formularz poniżej. W ciągu doby odpiszę z danymi do przelewu albo BLIK-a, a po wpłacie wyślę voucher jako PDF do wydrukowania albo przesłania dalej.</p>
+          <p>Zamów go przez formularz. W ciągu doby odpiszę z danymi do przelewu albo BLIK-a, a po wpłacie wyślę voucher jako PDF do wydrukowania albo przesłania dalej.</p>
         </div>
-        <div class="voucher__karta" aria-hidden="true">
-          <span>Voucher na sesję</span>
-          <strong>Seria</strong>
-          <span>Ważny 12 miesięcy, kod VC-XXXX</span>
-        </div>
+        <figure class="voucher__karta">
+          <img src="/assets/zdjecia/voucher-wzor-800.jpg" srcset="/assets/zdjecia/voucher-wzor-800.jpg 800w, /assets/zdjecia/voucher-wzor-1600.jpg 1600w" sizes="(max-width: 60rem) 100vw, 45vw" width="800" height="564" loading="lazy" decoding="async" alt="Przykładowy voucher na pakiet Seria: czarno-biały portret po lewej, po prawej nazwa pakietu, imię obdarowanej osoby, kod i data ważności">
+          <figcaption>Tak wygląda voucher, który wyślę Ci jako PDF.</figcaption>
+        </figure>
       </div>
 
       <form class="formularz" id="formularz-voucher" action="/api/voucher" method="post" novalidate data-sukces="Zamówienie wysłane. W ciągu doby odpiszę z danymi do płatności.">
@@ -220,12 +220,19 @@
         </div>
         <p class="komunikat" role="status" hidden></p>
       </form>
+      </div>
     </section>
 
     <section id="zapytanie" aria-labelledby="zapytanie-tytul">
-      <h2 class="naglowek" id="zapytanie-tytul">Zapytaj o termin</h2>
-      <div class="tekst">
-        <p>Odpowiadam w ciągu doby. Wysłanie formularza niczego jeszcze nie rezerwuje – termin i pakiet ustalimy razem.</p>
+      <div class="dwie-kolumny">
+      <div class="dwie-kolumny__opis">
+        <h2 class="naglowek" id="zapytanie-tytul">Zapytaj o termin</h2>
+        <div class="tekst">
+          <p>Odpowiadam w ciągu doby. Wysłanie formularza niczego jeszcze nie rezerwuje – termin i pakiet ustalimy razem.</p>
+        </div>
+        <figure class="dwie-kolumny__kadr">
+          <img src="/assets/zdjecia/zapytanie-800.jpg" srcset="/assets/zdjecia/zapytanie-800.jpg 800w, /assets/zdjecia/zapytanie-1600.jpg 1365w" sizes="(max-width: 60rem) 100vw, 40vw" width="800" height="1200" alt="Czarno-biały portret kobiety w skórzanej kurtce, z dłonią we włosach" loading="lazy" decoding="async">
+        </figure>
       </div>
 
       <form class="formularz" id="formularz" action="/api/zapytanie" method="post" novalidate data-sukces="Zapytanie wysłane. Odpowiem w ciągu doby.">
@@ -312,6 +319,7 @@
         </div>
         <p class="komunikat" role="status" hidden></p>
       </form>
+      </div>
     </section>
   </main>
 
@@ -321,6 +329,6 @@
     <p><a href="/regulamin/">Regulamin</a><br><a href="/polityka-prywatnosci/">Polityka prywatności</a></p>
   </footer>
 
-  <script src="/assets/formularz.js" defer></script>
+  <script src="/assets/formularz.js?v=a19074df" defer></script>
 </body>
 </html>
