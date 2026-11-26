@@ -62,13 +62,13 @@
     if (pasek) { pasek.hidden = false; pasek.querySelector("button").focus(); return; }
     pasek = document.createElement("div");
     pasek.setAttribute("role", "region");
-    pasek.className = "zgoda";
+    pasek.className = "pasek-cookies";
     pasek.setAttribute("aria-label", "Zgoda na pliki cookies");
     pasek.innerHTML =
       '<p>Za Twoją zgodą używam plików cookies Google Ads, żeby sprawdzać, czy reklamy prowadzą do zapytań o sesję. ' +
       'Nie służą do pokazywania Ci reklam. Bez zgody strona działa tak samo. ' +
       '<a href="/polityka-prywatnosci/#cookies">Szczegóły w polityce prywatności</a>.</p>' +
-      '<div class="zgoda__przyciski">' +
+      '<div class="pasek-cookies__przyciski">' +
       '<button type="button" class="przycisk" data-zgoda="tak">Zgadzam się</button>' +
       '<button type="button" class="przycisk" data-zgoda="nie">Nie zgadzam się</button>' +
       "</div>";
