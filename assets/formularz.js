@@ -54,6 +54,7 @@
         if (odp.ok) {
           form.reset();
           pokaz(form.dataset.sukces || "Wysłane.");
+          if (window.mcKonwersja) window.mcKonwersja(form.dataset.konwersja);
         } else {
           pokaz(json.komunikat || "Nie udało się wysłać formularza. Napisz na michal@michalciemiega.pl.");
         }

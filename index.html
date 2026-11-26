@@ -21,8 +21,9 @@
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
+  <script src="/assets/zgoda.js?v=6c8dcc45" defer></script>
   <!-- /glowa -->
-  <link rel="stylesheet" href="/assets/style.css?v=b68d5e73">
+  <link rel="stylesheet" href="/assets/style.css?v=dd81bf63">
 </head>
 <body>
   <a class="skip" href="#tresc">Przejdź do treści</a>
@@ -192,7 +193,7 @@
         </figure>
       </div>
 
-      <form class="formularz" id="formularz-voucher" action="/api/voucher" method="post" novalidate data-sukces="Zamówienie wysłane. W ciągu doby odpiszę z danymi do płatności.">
+      <form class="formularz" id="formularz-voucher" action="/api/voucher" method="post" novalidate data-konwersja="voucher" data-sukces="Zamówienie wysłane. W ciągu doby odpiszę z danymi do płatności.">
         <div class="pole">
           <label for="v-pakiet">Pakiet na voucherze</label>
           <select id="v-pakiet" name="pakiet" required>
@@ -250,7 +251,7 @@
         </figure>
       </div>
 
-      <form class="formularz" id="formularz" action="/api/zapytanie" method="post" novalidate data-sukces="Zapytanie wysłane. Odpowiem w ciągu doby.">
+      <form class="formularz" id="formularz" action="/api/zapytanie" method="post" novalidate data-konwersja="zapytanie" data-sukces="Zapytanie wysłane. Odpowiem w ciągu doby.">
         <div class="pole">
           <label for="imie">Imię</label>
           <input type="text" id="imie" name="imie" autocomplete="given-name" required>
@@ -344,6 +345,6 @@
     <p><a href="/regulamin/">Regulamin</a><br><a href="/polityka-prywatnosci/">Polityka prywatności</a></p>
   </footer>
 
-  <script src="/assets/formularz.js?v=a19074df" defer></script>
+  <script src="/assets/formularz.js?v=c43c78d3" defer></script>
 </body>
 </html>

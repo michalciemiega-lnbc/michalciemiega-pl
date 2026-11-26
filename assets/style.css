@@ -330,6 +330,29 @@ fieldset { border: 0; margin: 0; padding: 0; }
 .stopka p { margin: 0; }
 .stopka a { color: var(--grafit); }
 
+/* ---------- Zgoda na pliki cookies ---------- */
+
+.zgoda {
+  position: fixed; z-index: 50;
+  right: var(--margines); bottom: 1rem; left: var(--margines);
+  max-width: 34rem; margin-left: auto;
+  padding: 1.25rem 1.5rem;
+  background: var(--papier); color: var(--grafit);
+  border: 1px solid var(--grafit);
+  box-shadow: 0 18px 40px -16px rgba(31, 31, 30, 0.35);
+  font-size: 0.9375rem; line-height: 1.5;
+}
+.zgoda[hidden] { display: none; }
+.zgoda p { margin: 0 0 1rem; }
+.zgoda a { color: var(--grafit); }
+.zgoda__przyciski { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+.zgoda__przyciski .przycisk { flex: 1 1 9rem; padding: 0.85rem 1rem; text-align: center; }
+.stopka__link {
+  padding: 0; border: 0; background: none;
+  font: inherit; color: var(--grafit);
+  text-decoration: underline; cursor: pointer;
+}
+
 /* ---------- Mniejsze ekrany ---------- */
 
 @media (max-width: 60rem) {
