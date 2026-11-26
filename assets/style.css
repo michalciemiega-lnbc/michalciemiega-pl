@@ -333,6 +333,7 @@ fieldset { border: 0; margin: 0; padding: 0; }
 /* ---------- Zgoda na pliki cookies ---------- */
 
 .zgoda {
+  display: block;
   position: fixed; z-index: 50;
   right: var(--margines); bottom: 1rem; left: var(--margines);
   max-width: 34rem; margin-left: auto;
@@ -346,7 +347,7 @@ fieldset { border: 0; margin: 0; padding: 0; }
 .zgoda p { margin: 0 0 1rem; }
 .zgoda a { color: var(--grafit); }
 .zgoda__przyciski { display: flex; flex-wrap: wrap; gap: 0.75rem; }
-.zgoda__przyciski .przycisk { flex: 1 1 9rem; padding: 0.85rem 1rem; text-align: center; }
+.zgoda__przyciski .przycisk { flex: 1 1 9rem; padding: 0.85rem 1rem; text-align: center; white-space: nowrap; }
 .stopka__link {
   padding: 0; border: 0; background: none;
   font: inherit; color: var(--grafit);

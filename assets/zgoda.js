@@ -60,7 +60,8 @@
   let pasek = null;
   function pokazPasek(zFokusem) {
     if (pasek) { pasek.hidden = false; pasek.querySelector("button").focus(); return; }
-    pasek = document.createElement("section");
+    pasek = document.createElement("div");
+    pasek.setAttribute("role", "region");
     pasek.className = "zgoda";
     pasek.setAttribute("aria-label", "Zgoda na pliki cookies");
     pasek.innerHTML =
